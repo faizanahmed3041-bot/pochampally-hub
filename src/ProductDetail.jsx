@@ -6,9 +6,11 @@ export default function ProductDetail(){
   const [product,setProduct] = useState(null)
 
   useEffect(()=>{
-    fetch('/api/products').then(r=>{ if(!r.ok) throw new Error('no-api'); return r.json() }).then(list=>{
-      const p = list.find(x=>String(x.id)===String(id))
-      setProduct(p)
+    import('./api').then(({ getJson }) => {
+      getJson('/api/products').then(list=>{
+        const p = list.find(x=>String(x.id)===String(id))
+        setProduct(p)
+      }).catch(()=>setProduct(null))
     }).catch(()=>setProduct(null))
   },[id])
 

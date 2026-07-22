@@ -12,12 +12,16 @@ export default function Products(){
       { id:4, name: 'Golden Yellow Ikat Saree', price:3299, originalPrice:4599, image:'https://images.unsplash.com/photo-1771929837105-122c2aab8a04?w=900&q=80&auto=format&fit=crop' }
     ];
 
-    fetch('/api/products').then(r=>{ if(!r.ok) throw new Error('no-api'); return r.json() }).then(j=>{
-      if (!j || !Array.isArray(j) || j.length === 0) {
+    import('./api').then(({ getJson }) => {
+      getJson('/api/products').then(j=>{
+        if (!j || !Array.isArray(j) || j.length === 0) {
+          setProducts(fallback);
+        } else {
+          setProducts(j);
+        }
+      }).catch(()=>{
         setProducts(fallback);
-      } else {
-        setProducts(j);
-      }
+      })
     }).catch(()=>{
       setProducts(fallback);
     })

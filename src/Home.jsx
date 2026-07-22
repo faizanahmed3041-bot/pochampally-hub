@@ -11,7 +11,9 @@ export default function Home(){
   const [products,setProducts] = useState([])
 
   useEffect(()=>{
-    fetch('/api/products').then(r=>{ if(!r.ok) throw new Error('no-api'); return r.json() }).then(j=>setProducts(j)).catch(()=>setProducts(PRODUCTS))
+    import('./api').then(({ getJson }) => {
+      getJson('/api/products').then(j=>setProducts(j)).catch(()=>setProducts(PRODUCTS))
+    }).catch(()=>setProducts(PRODUCTS))
   },[])
 
   return (

@@ -8,9 +8,8 @@ export default function Orders(){
   const fetchByPhone = async () => {
     setLoading(true)
     try{
-      const res = await fetch(`/api/orders/user/${encodeURIComponent(phone)}`)
-      if(!res.ok) throw new Error('no-api')
-      const data = await res.json()
+      const { getJson } = await import('./api')
+      const data = await getJson(`/api/orders/user/${encodeURIComponent(phone)}`)
       setOrders(data)
     }catch(e){
       setOrders(null)

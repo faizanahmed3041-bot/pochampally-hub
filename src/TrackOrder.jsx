@@ -6,9 +6,8 @@ export default function TrackOrder(){
 
   const lookup = async ()=>{
     try{
-      const res = await fetch(`/api/orders/${encodeURIComponent(orderId)}`)
-      if(!res.ok) throw new Error('no-api')
-      const j = await res.json()
+      const { getJson } = await import('./api')
+      const j = await getJson(`/api/orders/${encodeURIComponent(orderId)}`)
       setOrder(j)
     }catch(e){
       setOrder(null)
