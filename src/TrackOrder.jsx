@@ -1,0 +1,36 @@
+import React, { useState } from 'react'
+
+export default function TrackOrder(){
+  const [orderId,setOrderId] = useState('')
+  const [order,setOrder] = useState(null)
+
+  const lookup = async ()=>{
+    try{
+      const res = await fetch(`/api/orders/${encodeURIComponent(orderId)}`)
+      if(!res.ok) throw new Error('no-api')
+      const j = await res.json()
+      setOrder(j)
+    }catch(e){
+      setOrder(null)
+      alert('Orders API not available or order not found. Run backend to enable tracking.')
+    }
+  }
+
+  return (
+    <div className="container">
+      <h2>Track Order</h2>
+      <div style={{display:'flex',gap:8,marginTop:8}}>
+        <input value={orderId} onChange={e=>setOrderId(e.target.value)} placeholder="Enter Order ID" />
+        <button onClick={lookup} className="btn">Track</button>
+      </div>
+
+      {order && (
+        <div style={{marginTop:16,padding:12,border:'1px solid #eee',borderRadius:6}}>
+          <div><strong>Order ID:</strong> {order.id}</div>
+          <div><strong>Status:</strong> {order.status}</div>
+          <div><strong>Date:</strong> {new Date(order.date).toLocaleString()}</div>
+        </div>
+      )}
+    </div>
+  )
+}
