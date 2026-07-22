@@ -12,6 +12,7 @@ function Nav(){
         <div><Link to="/" style={{fontWeight:700,textDecoration:'none'}}>Pochampally Hub</Link></div>
         <div style={{display:'flex',gap:12}}>
           <Link to="/">Home</Link>
+          <Link to="/products">Products</Link>
           <Link to="/orders">My Orders</Link>
           <Link to="/track">Track Order</Link>
         </div>

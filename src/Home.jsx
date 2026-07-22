@@ -21,12 +21,12 @@ export default function Home(){
           <h1>Beautiful Handcrafted Pochampally Ikat</h1>
           <p>Authentic weaves, vibrant colours, and timeless designs — shop curated sarees and fabrics.</p>
           <div style={{marginTop:16}}>
-            <Link to="/" className="btn">Shop Now</Link>
+            <Link to="/products" className="btn">Shop Now</Link>
             <Link to="/orders" className="btn ghost" style={{marginLeft:8}}>My Orders</Link>
           </div>
         </div>
         <div className="hero-image" aria-hidden>
-          <img src="https://images.unsplash.com/photo-1610189026205-27510cfc52f8?w=900" alt="Pochampally fabrics" />
+          <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=900" alt="Pochampally fabrics" />
         </div>
       </section>
 
@@ -39,6 +39,19 @@ export default function Home(){
           </Link>
         ))}
       </div>
+
+      <section className="about" style={{marginTop:28}}>
+        <h2>About Pochampally Ikat</h2>
+        <div style={{display:'flex',gap:16,marginTop:12,alignItems:'center'}}>
+          <div style={{flex:1}}>
+            <p>Pochampally Ikat is a traditional handloom dyeing technique from Telangana, India. Known for its geometric patterns and vibrant colours, Ikat involves resist-dyeing the yarns prior to weaving, creating designs with a characteristic blurred edge. Each piece is handcrafted by skilled weavers and often takes several days to complete.</p>
+            <p style={{marginTop:8}}>Our collection celebrates authentic craftsmanship — from pure cotton everyday sarees to luxurious silk weaves for special occasions.</p>
+          </div>
+          <div style={{flex:'0 0 320px'}}>
+            <img src="https://images.unsplash.com/photo-1503342452485-86f7b23b7d8b?w=800" alt="weaving" style={{width:'100%',borderRadius:8}} />
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
