@@ -10,8 +10,14 @@ export default function TrackOrder(){
       const j = await getJson(`/api/orders/${encodeURIComponent(orderId)}`)
       setOrder(j)
     }catch(e){
-      setOrder(null)
-      alert('Orders API not available or order not found. Run backend to enable tracking.')
+      const stored = JSON.parse(localStorage.getItem('pochampally-orders') || '[]')
+      const found = stored.find(o => o.orderId === orderId || o.id === orderId)
+      if (found) {
+        setOrder(found)
+      } else {
+        setOrder(null)
+        alert('Orders API not available or order not found. Use a local order ID if placed without backend.')
+      }
     }
   }
 

@@ -12,8 +12,12 @@ export default function Orders(){
       const data = await getJson(`/api/orders/user/${encodeURIComponent(phone)}`)
       setOrders(data)
     }catch(e){
-      setOrders(null)
-      alert('Orders API not available. Run backend to fetch real orders.')
+      const stored = JSON.parse(localStorage.getItem('pochampally-orders') || '[]')
+      const filtered = stored.filter(o => o.customer?.phone === phone)
+      setOrders(filtered)
+      if (!filtered.length) {
+        alert('Orders API not available. Showing local orders if any.')
+      }
     }finally{setLoading(false)}
   }
 
