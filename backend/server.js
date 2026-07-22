@@ -154,12 +154,58 @@ app.get('/api/orders', (req, res) => {
 });
 
 app.post('/api/orders', (req, res) => {
-  const order = req.body;
-  order.id = 'PH' + Date.now().toString(36).toUpperCase();
-  order.date = new Date().toISOString();
-  order.status = 'confirmed';
-  orders.push(order);
-  res.json({ success: true, orderId: order.id });
+  try {
+    const payload = req.body || {};
+    const order = Object.assign({}, payload);
+    order.id = 'PH' + Date.now().toString(36).toUpperCase();
+    order.trackingId = 'TRK' + Date.now().toString(36).toUpperCase();
+    order.date = new Date().toISOString();
+
+    // Normalize items: accept either items array of {id,quantity} or single productId
+    const rawItems = Array.isArray(order.items) ? order.items : (order.items ? [order.items] : (order.productId ? [{ id: order.productId, quantity: order.quantity || 1 }] : []));
+    const itemsDetailed = rawItems.map(it => {
+      const pid = it.productId || it.id || it.product || it;
+      const qty = Number(it.quantity || it.qty || 1);
+      const prod = products.find(p => Number(p.id) === Number(pid));
+      return {
+        id: prod ? prod.id : pid,
+        name: prod ? prod.name : (it.name || 'Unknown item'),
+        price: prod ? prod.price : Number(it.price || 0),
+        quantity: qty
+      };
+    });
+
+    const total = itemsDetailed.reduce((s, it) => s + (Number(it.price || 0) * Number(it.quantity || 1)), 0);
+    const prebookingAmount = Math.round(total * 0.3);
+    const remainingAmount = total - prebookingAmount;
+
+    order.items = itemsDetailed;
+    order.total = total;
+    order.prebookingAmount = prebookingAmount;
+    order.remainingAmount = remainingAmount;
+    order.status = 'confirmed';
+
+    orders.push(order);
+
+    // Attempt to send confirmation email if configured
+    const customerEmail = order.customer && order.customer.email;
+    if (customerEmail && process.env.EMAIL_USER && process.env.EMAIL_PASS && process.env.EMAIL_USER !== 'your-email@gmail.com') {
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: customerEmail,
+        subject: `Order Confirmation - Pochampally Hub (Order ID: ${order.id})`,
+        html: `<p>Thanks for your order. Your tracking id is <strong>${order.trackingId}</strong>.</p>`
+      };
+      transporter.sendMail(mailOptions).catch(err => console.error('Email send failed', err));
+    } else if (customerEmail) {
+      console.log('Email not configured on server. Would send to:', customerEmail, 'Order:', order.id);
+    }
+
+    res.json({ success: true, orderId: order.id, trackingId: order.trackingId, total: order.total });
+  } catch (err) {
+    console.error('Order error:', err);
+    res.status(500).json({ error: 'Failed to place order' });
+  }
 });
 
 app.get('/api/orders/:id', (req, res) => {
