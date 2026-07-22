@@ -9,6 +9,7 @@ export default function Checkout(){
   const [customer, setCustomer] = useState({ name:'', email:'', phone:'', address:'', city:'', state:'', pincode:'' })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [statusMessage, setStatusMessage] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function Checkout(){
       return
     }
     setError('')
+    setStatusMessage('')
     setLoading(true)
 
     const qty = Math.max(1, Number(quantity))
@@ -149,6 +151,7 @@ export default function Checkout(){
               <div style={{fontWeight:700,marginTop:6}}>₹{Math.round(product.price * quantity * 0.3)}</div>
             </div>
           </div>
+          {statusMessage && <p style={{color:'#0f766e',marginTop:16}}>{statusMessage}</p>}
           {error && <p style={{color:'#b91c1c',marginTop:16}}>{error}</p>}
           <button type="submit" className="btn" style={{width:'100%',marginTop:20}} disabled={loading}>{loading ? 'Placing order...' : 'Place Order'}</button>
         </form>
