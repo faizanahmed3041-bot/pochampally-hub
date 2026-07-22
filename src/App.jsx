@@ -5,6 +5,8 @@ import Products from './Products'
 import ProductDetail from './ProductDetail' // may not exist after revert; keep import optional
 import Checkout from './Checkout'
 import Confirmation from './Confirmation'
+import Weavers from './Weavers'
+import YarnConfirmation from './YarnConfirmation'
 import Orders from './Orders'
 import TrackOrder from './TrackOrder'
 import NotFound from './NotFound'
@@ -35,6 +37,8 @@ export default function App(){
         <Route path="/product/:id" element={ (typeof ProductDetail!=='undefined') ? <ProductDetail/> : <Home/> } />
         <Route path="/checkout/:id" element={<Checkout/>} />
         <Route path="/confirmation/:id" element={<Confirmation/>} />
+        <Route path="/weavers" element={<Weavers/>} />
+        <Route path="/yarn-confirmation" element={<YarnConfirmation/>} />
         <Route path="/orders" element={<Orders/>} />
         <Route path="/track" element={<TrackOrder/>} />
         <Route path="*" element={<NotFound/>} />

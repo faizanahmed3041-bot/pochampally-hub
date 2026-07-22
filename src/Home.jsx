@@ -22,9 +22,10 @@ export default function Home(){
         <div>
           <h1>Beautiful Handcrafted Pochampally Ikat</h1>
           <p>Authentic weaves, vibrant colours, and timeless designs — shop curated sarees and fabrics.</p>
-          <div style={{marginTop:16}}>
+          <div style={{marginTop:16,display:'flex',flexWrap:'wrap',gap:12}}>
             <Link to="/products" className="btn">Shop Now</Link>
-            <Link to="/orders" className="btn ghost" style={{marginLeft:8}}>My Orders</Link>
+            <Link to="/orders" className="btn ghost">My Orders</Link>
+            <Link to="/weavers" className="btn" style={{background:'#1e293b',color:'#fff'}}>Weaver Dashboard</Link>
           </div>
         </div>
         <div className="hero-image" aria-hidden>
