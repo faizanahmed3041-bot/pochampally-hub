@@ -22,7 +22,7 @@ export default function ProductDetail(){
       <h2 style={{marginTop:12}}>{product.name}</h2>
       <div style={{display:'flex',gap:24,marginTop:12}}>
         <div style={{flex:'0 0 420px'}}>
-          <img src={product.image} alt={product.name} style={{width:'100%',borderRadius:8}} />
+          <img loading="lazy" src={product.image} alt={product.name} style={{width:'100%',borderRadius:8}} />
         </div>
         <div>
           <p style={{color:'#6b7280'}}>₹{product.price}</p>

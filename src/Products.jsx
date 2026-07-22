@@ -24,7 +24,7 @@ export default function Products(){
       <div className="grid" style={{marginTop:12}}>
         {products.map(p=> (
           <Link to={`/product/${p.id}`} key={p.id} className="card">
-            <div className="card-image"><img src={p.image} alt={p.name} /></div>
+            <div className="card-image"><img loading="lazy" src={p.image} alt={p.name} /></div>
             <div className="card-body"><div className="card-title">{p.name}</div><div className="card-price">₹{p.price}</div></div>
           </Link>
         ))}

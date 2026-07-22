@@ -26,7 +26,7 @@ export default function Home(){
           </div>
         </div>
         <div className="hero-image" aria-hidden>
-          <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=900" alt="Pochampally fabrics" />
+          <img loading="lazy" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200&q=80&auto=format&fit=crop" alt="Pochampally saree showcase" />
         </div>
       </section>
 
@@ -34,7 +34,7 @@ export default function Home(){
       <div className="grid" style={{marginTop:10}}>
         {products.slice(0,6).map(p=> (
           <Link to={`/product/${p.id}`} key={p.id} className="card">
-            <div className="card-image"><img src={p.image} alt={p.name} /></div>
+            <div className="card-image"><img loading="lazy" src={p.image} alt={p.name} /></div>
             <div className="card-body"><div className="card-title">{p.name}</div><div className="card-price">₹{p.price}</div></div>
           </Link>
         ))}
@@ -48,7 +48,7 @@ export default function Home(){
             <p style={{marginTop:8}}>Our collection celebrates authentic craftsmanship — from pure cotton everyday sarees to luxurious silk weaves for special occasions.</p>
           </div>
           <div style={{flex:'0 0 320px'}}>
-            <img src="https://images.unsplash.com/photo-1503342452485-86f7b23b7d8b?w=800" alt="weaving" style={{width:'100%',borderRadius:8}} />
+            <img loading="lazy" src="https://images.unsplash.com/photo-1771929837105-122c2aab8a04?w=900&q=80&auto=format&fit=crop" alt="weaving saree" style={{width:'100%',borderRadius:8}} />
           </div>
         </div>
       </section>
