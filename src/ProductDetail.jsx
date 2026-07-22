@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { PRODUCTS as FALLBACK_PRODUCTS } from './productData'
 
 export default function ProductDetail(){
   const { id } = useParams()
@@ -9,9 +10,13 @@ export default function ProductDetail(){
     import('./api').then(({ getJson }) => {
       getJson('/api/products').then(list=>{
         const p = list.find(x=>String(x.id)===String(id))
-        setProduct(p)
-      }).catch(()=>setProduct(null))
-    }).catch(()=>setProduct(null))
+        setProduct(p || FALLBACK_PRODUCTS.find(x=>String(x.id)===String(id)))
+      }).catch(()=>{
+        setProduct(FALLBACK_PRODUCTS.find(x=>String(x.id)===String(id)))
+      })
+    }).catch(()=>{
+      setProduct(FALLBACK_PRODUCTS.find(x=>String(x.id)===String(id)))
+    })
   },[id])
 
   if(!product) return (

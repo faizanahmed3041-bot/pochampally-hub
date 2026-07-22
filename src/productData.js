@@ -1,0 +1,122 @@
+export const PRODUCTS = [
+  {
+    id: 1,
+    name: 'Red Geometric Ikat Saree',
+    price: 2499,
+    originalPrice: 3499,
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=900&q=80&auto=format&fit=crop',
+    description: 'Handwoven traditional Pochampally Ikat saree with intricate geometric patterns in rich red.',
+    material: 'Pure Cotton',
+    occasion: 'Wedding, Festival, Casual',
+    featured: true,
+    color: 'Red'
+  },
+  {
+    id: 2,
+    name: 'Blue Indigo Double Ikat Saree',
+    price: 3999,
+    originalPrice: 5499,
+    image: 'https://images.unsplash.com/photo-1676995304395-4302878b7258?w=900&q=80&auto=format&fit=crop',
+    description: 'Stunning double Ikat saree in deep indigo blue with mesmerizing diamond motifs.',
+    material: 'Pure Silk',
+    occasion: 'Wedding, Reception',
+    featured: true,
+    color: 'Blue'
+  },
+  {
+    id: 3,
+    name: 'Green Floral Ikat Saree',
+    price: 2899,
+    originalPrice: 3999,
+    image: 'https://images.unsplash.com/photo-1756483492198-8ca91227489b?w=900&q=80&auto=format&fit=crop',
+    description: 'Elegant green Ikat saree with floral motifs. Soft pastel tones for daytime events.',
+    material: 'Cotton Silk',
+    occasion: 'Festival, Casual',
+    featured: true,
+    color: 'Green'
+  },
+  {
+    id: 4,
+    name: 'Golden Yellow Ikat Saree',
+    price: 3299,
+    originalPrice: 4599,
+    image: 'https://images.unsplash.com/photo-1771929837105-122c2aab8a04?w=900&q=80&auto=format&fit=crop',
+    description: 'Radiant golden yellow Ikat saree with traditional temple border.',
+    material: 'Pure Cotton',
+    occasion: 'Wedding, Festival',
+    featured: false,
+    color: 'Yellow'
+  },
+  {
+    id: 5,
+    name: 'Purple Abstract Ikat Saree',
+    price: 2799,
+    originalPrice: 3799,
+    image: 'https://images.unsplash.com/photo-1743015346855-a2014c6e8930?w=900&q=80&auto=format&fit=crop',
+    description: 'Contemporary purple Ikat saree with abstract wave patterns.',
+    material: 'Cotton Blend',
+    occasion: 'Party, Casual',
+    featured: true,
+    color: 'Purple'
+  },
+  {
+    id: 6,
+    name: 'Orange Tie-Dye Ikat Saree',
+    price: 2199,
+    originalPrice: 2999,
+    image: 'https://images.unsplash.com/photo-1622182473147-579eab905ef9?w=900&q=80&auto=format&fit=crop',
+    description: 'Vibrant orange tie-dye Ikat saree with blended hues.',
+    material: 'Pure Cotton',
+    occasion: 'Casual, Day Events',
+    featured: false,
+    color: 'Orange'
+  },
+  {
+    id: 7,
+    name: 'Black & Grey Ikat Silk Saree',
+    price: 4499,
+    originalPrice: 5999,
+    image: 'https://images.unsplash.com/photo-1572470176170-98fa8abcb741?w=900&q=80&auto=format&fit=crop',
+    description: 'Sophisticated black and grey double Ikat silk saree for evening wear.',
+    material: 'Pure Silk',
+    occasion: 'Party, Reception',
+    featured: true,
+    color: 'Black'
+  },
+  {
+    id: 8,
+    name: 'Multicolor Warp Ikat Saree',
+    price: 3499,
+    originalPrice: 4899,
+    image: 'https://images.unsplash.com/photo-1610189026205-27510cfc52f8?w=900&q=80&auto=format&fit=crop',
+    description: 'Colorful warp Ikat saree featuring a spectrum of hues in traditional zigzag patterns.',
+    material: 'Silk Cotton',
+    occasion: 'Festival, Wedding',
+    featured: true,
+    color: 'Multicolor'
+  },
+  {
+    id: 9,
+    name: 'Maroon Traditional Ikat Saree',
+    price: 2599,
+    originalPrice: 3599,
+    image: 'https://images.unsplash.com/photo-1761125135351-268e72e39158?w=900&q=80&auto=format&fit=crop',
+    description: 'Classic maroon Ikat saree with traditional motifs symbolizing tradition and elegance.',
+    material: 'Pure Cotton',
+    occasion: 'Wedding, Festival',
+    featured: false,
+    color: 'Maroon'
+  },
+  {
+    id: 10,
+    name: 'Pink Weft Ikat Saree',
+    price: 1899,
+    originalPrice: 2599,
+    image: 'https://images.unsplash.com/photo-1750008560217-53fd7066acec?w=900&q=80&auto=format&fit=crop',
+    description: 'Delicate pink weft Ikat saree with soft gradients. Lightweight and comfortable.',
+    material: 'Pure Cotton',
+    occasion: 'Casual, Office Wear',
+    featured: true,
+    color: 'Pink'
+  }
+]
