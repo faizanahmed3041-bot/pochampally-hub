@@ -3,6 +3,8 @@ import { Routes, Route, Link } from 'react-router-dom'
 import Home from './Home'
 import Products from './Products'
 import ProductDetail from './ProductDetail' // may not exist after revert; keep import optional
+import Checkout from './Checkout'
+import Confirmation from './Confirmation'
 import Orders from './Orders'
 import TrackOrder from './TrackOrder'
 
@@ -30,6 +32,8 @@ export default function App(){
         <Route path="/" element={<Home/>} />
         <Route path="/products" element={<Products/>} />
         <Route path="/product/:id" element={ (typeof ProductDetail!=='undefined') ? <ProductDetail/> : <Home/> } />
+        <Route path="/checkout/:id" element={<Checkout/>} />
+        <Route path="/confirmation/:id" element={<Confirmation/>} />
         <Route path="/orders" element={<Orders/>} />
         <Route path="/track" element={<TrackOrder/>} />
       </Routes>
