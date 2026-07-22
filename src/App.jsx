@@ -7,6 +7,7 @@ import Checkout from './Checkout'
 import Confirmation from './Confirmation'
 import Orders from './Orders'
 import TrackOrder from './TrackOrder'
+import NotFound from './NotFound'
 
 function Nav(){
   return (
@@ -36,6 +37,7 @@ export default function App(){
         <Route path="/confirmation/:id" element={<Confirmation/>} />
         <Route path="/orders" element={<Orders/>} />
         <Route path="/track" element={<TrackOrder/>} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </div>
   )
