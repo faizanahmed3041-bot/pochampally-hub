@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+import ProductDetail from './ProductDetail'
 
 const PRODUCTS = [
   { id:1, name: "Red Geometric Ikat Saree", price:2499, image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600" },
@@ -13,7 +15,7 @@ const PRODUCTS = [
   { id:10, name: "Pink Weft Ikat Saree", price:1899, image: "https://images.unsplash.com/photo-1750008560217-53fd7066acec?w=600" }
 ]
 
-export default function App() {
+export default function Home() {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
@@ -25,22 +27,35 @@ export default function App() {
   }, [])
 
   return (
-    <div style={{fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, sans-serif', padding: 24}}>
-      <h1 style={{marginBottom:16}}>Pochampally Hub</h1>
-      <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(220px, 1fr))', gap:16}}>
+    <div className="container">
+      <header style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+        <h1>Pochampally Hub</h1>
+        <nav><Link to="/">Home</Link></nav>
+      </header>
+
+      <div className="grid">
         {products.map(p => (
-          <div key={p.id} style={{border:'1px solid #eee', borderRadius:8, overflow:'hidden', background:'#fff'}}>
-            <div style={{height:200, background:'#fafafa', display:'flex', alignItems:'center', justifyContent:'center'}}>
-              <img src={p.image} alt={p.name} style={{maxWidth:'100%', maxHeight:'100%', objectFit:'cover'}} />
+          <Link to={`/product/${p.id}`} key={p.id} className="card">
+            <div className="card-image">
+              <img src={p.image} alt={p.name} />
             </div>
-            <div style={{padding:12}}>
-              <div style={{fontWeight:600}}>{p.name}</div>
-              <div style={{color:'#6b7280', marginTop:6}}>₹{p.price}</div>
+            <div className="card-body">
+              <div className="card-title">{p.name}</div>
+              <div className="card-price">₹{p.price}</div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
+  )
+}
+
+export function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/product/:id" element={<ProductDetail />} />
+    </Routes>
   )
 }
 
